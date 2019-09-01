@@ -1,8 +1,8 @@
 <template>
   <nav>
     <ul class="nav-white">
-      <li v-for="value in list">
-        {{ value }}
+      <li v-for="value in heading" :key="value" :class="value.active">
+        {{ value.title }}
       </li>
     </ul>
   </nav>
@@ -12,7 +12,7 @@
 export default {
   name: 'WhiteNavBar',
   props: {
-    
+    heading: Array,
   }
 }
 </script>

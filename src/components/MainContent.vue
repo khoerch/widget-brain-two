@@ -1,19 +1,10 @@
 <template>
   <section class="main-content">
-    <WhiteNavBar headings={{terminalList}}/>
+    <WhiteNavBar :heading="terminalList"/>
 
     <div class="chart-content">
       <h2 class="blue-header">Asset overview</h2>
-      <nav>
-        <ul class="nav-inner">
-          <li>Events</li>
-          <li>Position</li>
-          <li>Travel Time</li>
-          <li class="active">Torque Profile</li>
-          <li>Work Orders</li>
-          <li>Alarm Analytics</li>
-        </ul>
-      </nav>
+      <WhiteNavBar :heading="assetList"/>
       <Chart />
     </div>
   </section>
@@ -44,12 +35,36 @@ export default {
           active: false
         }
       ],
-      assetList: ['Events', 'Position', 'Travel Time', 'Torque Profile', 'Work Orders', 'Alarm Analytics']
+      assetList: [{
+          title: 'Events',
+          active: false
+        }, 
+        {
+          title: 'Position',
+          active: false
+        }, 
+        {
+          title: 'Travel Time',
+          active: false
+        }, 
+        {
+          title: 'Torque Profile',
+          active: true
+        }, 
+        {
+          title: 'Work Orders',
+          active: false
+        }, 
+        {
+          title: 'Alarm Analytics',
+          active: false
+        }, 
+      ]
     }
-  }
+  },
   components: {
     Chart,
-    WhiteNavBar
+    WhiteNavBar,
   }
 }
 </script>
