@@ -14,6 +14,11 @@ export default {
 		};
 	},
 	mounted() {
+    fetch('http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues')
+			.then(response => response.json())
+			.then(res => {
+				console.log(res);
+			})
 		this.fillData();
 	},
 	methods: {
