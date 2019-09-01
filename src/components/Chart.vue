@@ -1,5 +1,5 @@
 <template>
-	<chart :chart-data="datacollection"></chart>
+	<chart :chart-data="datacollection" class="chart-content"></chart>
 </template>
 
 <script>

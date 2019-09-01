@@ -53,9 +53,10 @@ header {
     align-items: center;
 }
 
-.profile > button {
+button {
     border: none;
     background: none;
+    color: inherit;
     padding: 5px;
 }
 
@@ -98,8 +99,8 @@ main {
     padding: 15px 30px;
 }
 
-/* .chart-content {
+.chart-content {
     margin: 20px;
     background: white;
-} */
+}
 </style>
