@@ -20,12 +20,14 @@
           <li>Alarm Analytics</li>
         </ul>
       </nav>
-      
+      <Chart />
     </div>
   </section>
 </template>
 
 <script>
+import Chart from './Chart.vue'
+
 export default {
   name: 'HeaderTitle',
   props: {
@@ -33,7 +35,7 @@ export default {
     country: String
   },
   components: {
-    
+    Chart
   }
 }
 </script>
