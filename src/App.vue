@@ -1,28 +1,106 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HeaderTitle user="Kevin Hoercher"/>
+    <main>
+      <SidebarLeft terminal="WEST" country="NLD"/>
+      <MainContent />
+    </main>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import HeaderTitle from './components/HeaderTitle.vue'
+import SidebarLeft from './components/SidebarLeft.vue'
+import MainContent from './components/MainContent.vue'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
-    HelloWorld
+    HeaderTitle,
+    SidebarLeft,
+    MainContent
   }
-};
+}
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+    box-sizing: border-box;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: rgb(97, 97, 97);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 80px;
+    padding-right: 30px;
+    border-bottom: solid darkgray 1px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile > button {
+    border: none;
+    background: none;
+    padding: 5px;
+}
+
+main {
+    display: flex;
+}
+
+.sidebar {
+    width: 28%;
+}
+
+.blue-header {
+    margin: 0;
+    padding: 10px;
+    background: lightblue;
+}
+
+.site-info {
+    padding: 20px;
+}
+
+.main-content {
+    width: 72%;
+    background: gray;
+}
+
+.active {
+    color: blue;
+    border-bottom: solid 2px blue;
+}
+
+.nav-inner {
+    background: white;
+    display: flex;
+    padding: 0 15px;
+    border-bottom: solid darkgray 1px;
+}
+
+.nav-inner> li {
+    padding: 15px 30px;
+}
+
+/* .chart-content {
+    margin: 20px;
+    background: white;
+} */
 </style>
