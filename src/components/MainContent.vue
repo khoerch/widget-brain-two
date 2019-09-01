@@ -1,12 +1,6 @@
 <template>
   <section class="main-content">
-    <nav>
-      <ul class="nav-inner">
-        <li>Dashboard</li>
-        <li class="active">Asset Health</li>
-        <li>Work Orders</li>
-      </ul>
-    </nav>
+    <WhiteNavBar headings={{terminalList}}/>
 
     <div class="chart-content">
       <h2 class="blue-header">Asset overview</h2>
@@ -27,15 +21,35 @@
 
 <script>
 import Chart from './Chart.vue'
+import WhiteNavBar from './WhiteNavBar.vue'
 
 export default {
-  name: 'HeaderTitle',
+  name: 'MainContent',
   props: {
     terminal: String,
     country: String
   },
+  data() {
+    return {
+      terminalList: [{
+          title: 'Dashboard',
+          active: false
+        }, 
+        {
+          title: 'Asset Health',
+          active: true
+        }, 
+        {
+          title: 'Work Orders',
+          active: false
+        }
+      ],
+      assetList: ['Events', 'Position', 'Travel Time', 'Torque Profile', 'Work Orders', 'Alarm Analytics']
+    }
+  }
   components: {
-    Chart
+    Chart,
+    WhiteNavBar
   }
 }
 </script>

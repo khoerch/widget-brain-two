@@ -5,7 +5,6 @@
       <SidebarLeft terminal="WEST" country="NLD"/>
       <MainContent />
     </main>
-    
   </div>
 </template>
 
@@ -88,14 +87,14 @@ main {
     border-bottom: solid 2px blue;
 }
 
-.nav-inner {
+.nav-white {
     background: white;
     display: flex;
     padding: 0 15px;
     border-bottom: solid darkgray 1px;
 }
 
-.nav-inner> li {
+.nav-white> li {
     padding: 15px 30px;
 }
 

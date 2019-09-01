@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'HeaderTitle',
+  name: 'SidebarLeft',
   props: {
     terminal: String,
     country: String
