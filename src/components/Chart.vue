@@ -1,5 +1,8 @@
 <template>
-	<chart :chart-data="datacollection" class="chart-content"></chart>
+	<div class="chart-content">
+		<chart :chart-data="datacollectionClosed" class="chart-closed"></chart>
+		<chart :chart-data="datacollectionOpen" class="chart-open"></chart>
+	</div>
 </template>
 
 <script>
@@ -10,20 +13,52 @@ export default {
 	},
 	data() {
 		return {
-			datacollection: null
+			datacollectionOpen: null,
+			datacollectionClosed: null
 		};
 	},
 	mounted() {
-    fetch('http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues')
-			.then(response => response.json())
-			.then(res => {
-				console.log(res);
-			})
+    // fetch('http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues')
+		// 	.then(response => response.json())
+		// 	.then(res => {
+		// 		console.log(res);
+		// 	})
 		this.fillData();
 	},
 	methods: {
 		fillData() {
-			this.datacollection = {
+			fetch('http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues')
+				.then(response => response.json())
+				.then(data => data.filter(item => item.Profile === 14))
+				.then(profile => {
+					const profileClosed = profile.filter(item => item.Direction === 'Close')
+					const position = []
+					const averageOpen = []
+					const lastOpen = []
+					profileClosed.forEach(item => {
+						position.push(item.Position)
+						averageOpen.push(item.AverageTorque)
+						lastOpen.push(item.LastTorque)
+					});
+					console.log([averageOpen, averageOpen, position])
+					this.datacollectionClosed = {
+						labels: position,
+						datasets: [
+							{
+							label: "Average open torque",
+							backgroundColor: "#f87979",
+							data: averageOpen
+							},
+							{
+							label: "Last open torque",
+							backgroundColor: "#A5CC82",
+							data: lastOpen
+							}
+						]
+					};
+				});
+			
+			this.datacollectionOpen = {
 				labels: [
 					"January",
 					"February",
