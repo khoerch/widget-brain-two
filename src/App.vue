@@ -25,82 +25,42 @@ export default {
 
 <style>
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    color: rgb(97, 97, 97);
+	font-family: Arial, sans-serif;
+	margin: 0;
+	color: rgb(138, 138, 138);
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 80px;
-    padding-right: 30px;
-    border-bottom: solid darkgray 1px;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 button {
-    border: none;
-    background: none;
-    color: inherit;
-    padding: 5px;
+	border: none;
+	background: none;
+	color: inherit;
+	padding: 5px;
 }
 
 main {
-    display: flex;
+	display: flex;
 }
 
-.sidebar {
-    width: 28%;
+.flex {
+	display: flex;
+	align-items: center;
 }
 
 .blue-header {
-    margin: 0;
-    padding: 10px;
-    background: lightblue;
-}
-
-.site-info {
-    padding: 20px;
-}
-
-.main-content {
-    width: 72%;
-    background: gray;
-}
-
-.active {
-    color: blue;
-    border-bottom: solid 2px blue;
-}
-
-.nav-white {
-    background: white;
-    display: flex;
-    padding: 0 15px;
-    border-bottom: solid darkgray 1px;
-}
-
-.nav-white> li {
-    padding: 15px 30px;
-}
-
-.chart-content {
-    margin: 20px;
-    background: white;
+	justify-content: space-between;
+	margin: 0;
+	padding: 10px 15px 10px 20px;
+	background: #4885ed;
+	color: white;
 }
 </style>

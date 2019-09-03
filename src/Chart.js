@@ -23,7 +23,10 @@ export default {
                     }]
                 },
                 legend: {
-                    display: true
+                    display: true,
+                    labels: {
+                        usePointStyle: true,
+                    }
                 },
                 responsive: true,
                 maintainAspectRatio: false,

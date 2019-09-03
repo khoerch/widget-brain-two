@@ -1,9 +1,9 @@
 <template>
 	<div class="chart-content">
 		<h2>OPEN</h2>
-		<chart :chart-data="datacollectionOpen" class="chart-open"></chart>
+		<chart :chart-data="datacollectionOpen" class="chart chart-open"></chart>
 		<h2>CLOSE</h2>
-		<chart :chart-data="datacollectionClosed" class="chart-closed"></chart>
+		<chart :chart-data="datacollectionClosed" class="chart chart-closed"></chart>
 	</div>
 </template>
 
@@ -52,19 +52,18 @@ export default {
 						lastClosed.push(item.LastTorque)
 					});
 
-					console.log(profileOpen)
 					// Assign the data above to the data sets for the charts
 					this.datacollectionOpen = {
 						labels: position,
 						datasets: [
 							{
 							label: "Average open torque",
-							backgroundColor: "#f87979",
+							backgroundColor: "#4885ed",
 							data: averageOpen
 							},
 							{
 							label: "Last open torque",
-							backgroundColor: "#A5CC82",
+							backgroundColor: "#A3C2F6",
 							data: lastOpen
 							}
 						]
@@ -74,12 +73,12 @@ export default {
 						datasets: [
 							{
 							label: "Average open torque",
-							backgroundColor: "#f87979",
+							backgroundColor: "#4885ed",
 							data: averageClosed
 							},
 							{
 							label: "Last open torque",
-							backgroundColor: "#A5CC82",
+							backgroundColor: "#A3C2F6",
 							data: lastClosed
 							}
 						]
@@ -90,5 +89,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+div {
+	margin: 20px;
+}
 </style>
