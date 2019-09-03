@@ -1,6 +1,8 @@
 <template>
 	<div class="chart-content">
+		<h2>OPEN</h2>
 		<chart :chart-data="datacollectionOpen" class="chart-open"></chart>
+		<h2>CLOSE</h2>
 		<chart :chart-data="datacollectionClosed" class="chart-closed"></chart>
 	</div>
 </template>
@@ -13,12 +15,13 @@ export default {
 	},
 	data() {
 		return {
+			// The data for charts will be filled in when the component is mounted. Chose profile 2 as it had interesting data. Could be updated to make the profile selectable by user.
 			datacollectionOpen: null,
 			datacollectionClosed: null,
-			profile: 14
+			profile: 2
 		};
 	},
-	mounted() {
+	created() {
 		this.fillData();
 	},
 	methods: {
@@ -26,44 +29,32 @@ export default {
 			fetch('http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues')
 				.then(response => response.json())
 				.then(data => data.filter(item => item.Profile === this.profile))
-				// .then(profile => {
-				// 	const profileOpen = profile.filter(item => item.Direction === 'Open')
-				// 	const position = []
-				// 	const averageOpen = []
-				// 	const lastOpen = []
-				// 	profileClosed.forEach(item => {
-				// 		position.push(item.Position)
-				// 		averageOpen.push(item.AverageTorque)
-				// 		lastOpen.push(item.LastTorque)
-				// 	});
-				// 	this.datacollectionOpen = {
-				// 		labels: position,
-				// 		datasets: [
-				// 			{
-				// 			label: "Average open torque",
-				// 			backgroundColor: "#f87979",
-				// 			data: averageOpen
-				// 			},
-				// 			{
-				// 			label: "Last open torque",
-				// 			backgroundColor: "#A5CC82",
-				// 			data: lastOpen
-				// 			}
-				// 		]
-				// 	};
-				// })
 				.then(profile => {
+					// Filter for the open and closed data sets
+					const profileOpen = profile.filter(item => item.Direction === 'Open')
 					const profileClosed = profile.filter(item => item.Direction === 'Close')
+
+					// Make empty containers to push data into from the arrays above
 					const position = []
 					const averageOpen = []
 					const lastOpen = []
-					profileClosed.forEach(item => {
+					const averageClosed = []
+					const lastClosed = []
+
+					// Push the data into the empty arrays. Position only has to be set once since it's the same for both
+					profileOpen.forEach(item => {
 						position.push(item.Position)
 						averageOpen.push(item.AverageTorque)
 						lastOpen.push(item.LastTorque)
 					});
-					console.log([averageOpen, averageOpen, position])
-					this.datacollectionClosed = {
+					profileClosed.forEach(item => {
+						averageClosed.push(item.AverageTorque)
+						lastClosed.push(item.LastTorque)
+					});
+
+					console.log(profileOpen)
+					// Assign the data above to the data sets for the charts
+					this.datacollectionOpen = {
 						labels: position,
 						datasets: [
 							{
@@ -78,36 +69,22 @@ export default {
 							}
 						]
 					};
-				})
-			
-			this.datacollectionOpen = {
-				labels: [
-					"January",
-					"February",
-					"March",
-					"April",
-					"May",
-					"June",
-					"July",
-					"August",
-					"September",
-					"October",
-					"November",
-					"December"
-				],
-				datasets: [
-					{
-					label: "GitHub Commits",
-					backgroundColor: "#f87979",
-					data: [70, 20, 12, 39, 100, 40, 95, 80, 80, 20, 12, 101]
-					},
-					{
-					label: "Monthly incomes",
-					backgroundColor: "#A5CC82",
-					data: [205, 408, 188, 190, 58, 200, 190, 400, 164, 254, 290, 201]
-					}
-				]
-			};
+					this.datacollectionClosed = {
+						labels: position,
+						datasets: [
+							{
+							label: "Average open torque",
+							backgroundColor: "#f87979",
+							data: averageClosed
+							},
+							{
+							label: "Last open torque",
+							backgroundColor: "#A5CC82",
+							data: lastClosed
+							}
+						]
+					};
+				});
 		},
 	}
 };

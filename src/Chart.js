@@ -26,7 +26,7 @@ export default {
                     display: true
                 },
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
             }
         }
     },
