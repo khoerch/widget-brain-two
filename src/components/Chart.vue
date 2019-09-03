@@ -1,7 +1,7 @@
 <template>
 	<div class="chart-content">
-		<chart :chart-data="datacollectionClosed" class="chart-closed"></chart>
 		<chart :chart-data="datacollectionOpen" class="chart-open"></chart>
+		<chart :chart-data="datacollectionClosed" class="chart-closed"></chart>
 	</div>
 </template>
 
@@ -14,22 +14,44 @@ export default {
 	data() {
 		return {
 			datacollectionOpen: null,
-			datacollectionClosed: null
+			datacollectionClosed: null,
+			profile: 14
 		};
 	},
 	mounted() {
-    // fetch('http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues')
-		// 	.then(response => response.json())
-		// 	.then(res => {
-		// 		console.log(res);
-		// 	})
 		this.fillData();
 	},
 	methods: {
 		fillData() {
 			fetch('http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues')
 				.then(response => response.json())
-				.then(data => data.filter(item => item.Profile === 14))
+				.then(data => data.filter(item => item.Profile === this.profile))
+				// .then(profile => {
+				// 	const profileOpen = profile.filter(item => item.Direction === 'Open')
+				// 	const position = []
+				// 	const averageOpen = []
+				// 	const lastOpen = []
+				// 	profileClosed.forEach(item => {
+				// 		position.push(item.Position)
+				// 		averageOpen.push(item.AverageTorque)
+				// 		lastOpen.push(item.LastTorque)
+				// 	});
+				// 	this.datacollectionOpen = {
+				// 		labels: position,
+				// 		datasets: [
+				// 			{
+				// 			label: "Average open torque",
+				// 			backgroundColor: "#f87979",
+				// 			data: averageOpen
+				// 			},
+				// 			{
+				// 			label: "Last open torque",
+				// 			backgroundColor: "#A5CC82",
+				// 			data: lastOpen
+				// 			}
+				// 		]
+				// 	};
+				// })
 				.then(profile => {
 					const profileClosed = profile.filter(item => item.Direction === 'Close')
 					const position = []
@@ -56,7 +78,7 @@ export default {
 							}
 						]
 					};
-				});
+				})
 			
 			this.datacollectionOpen = {
 				labels: [
