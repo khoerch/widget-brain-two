@@ -35,8 +35,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .sidebar {
-	width: 28%;
-  max-width: 275px;
+	width: 35%;
+  max-width: 350px;
 }
 
 h2 {
@@ -70,5 +70,16 @@ p {
 .icon-map {
   color: #4885ed;
   align-self: flex-end;
+}
+
+/* Rearranges the window and removes some info on smaller screens */
+@media screen and (max-width: 1500px) {
+	.sidebar {
+		width: 100%;
+    max-width: 100%;
+	}
+	.site-info, img {
+		display: none;
+	}
 }
 </style>

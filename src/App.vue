@@ -1,3 +1,4 @@
+// User and terminal information are passed as strings but could be dynamically added for a fully functioned site
 <template>
   <div id="app">
     <HeaderTitle user="Kevin Hoercher"/>
@@ -62,5 +63,12 @@ main {
 	padding: 10px 15px 10px 20px;
 	background: #4885ed;
 	color: white;
+}
+
+/* Rearranges the window and removes some info on smaller screens */
+@media screen and (max-width: 1500px) {
+  main {
+    flex-direction: column;
+  }
 }
 </style>

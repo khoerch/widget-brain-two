@@ -29,6 +29,7 @@ export default {
   },
   data() {
     return {
+      // Different objects for the white nav bar component. Id value helps vue organize the lists
       terminalList: [{
           title: 'Dashboard',
           active: false,

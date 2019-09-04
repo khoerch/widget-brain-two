@@ -15,7 +15,7 @@ export default {
       },
     data() {
         return {
-            options: { //Chart.js options
+            options: { //Chart.js options. The options seem to be overwritten when the data is loaded from the API. Still debugging...
                 scales: {
                     yAxes: [{
                         ticks: {
