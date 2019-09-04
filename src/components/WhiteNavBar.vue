@@ -4,7 +4,7 @@
   <nav>
     <ul class="nav-white flex">
       <!-- Creates a list from each value in the array. Applies a class 'active' if class prop is true -->
-      <li v-for="value in heading" :key="value" :class="{ 'active' : value.active }">
+      <li v-for="value in heading" :key="value.id" :class="{ 'active' : value.active }">
         <button>{{ value.title.toUpperCase() }}</button>
       </li>
     </ul>

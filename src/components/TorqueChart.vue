@@ -18,10 +18,10 @@ export default {
 			// The data for charts will be filled in when the component is mounted. Chose profile 2 as it had interesting data. Could be updated to make the profile selectable by user.
 			datacollectionOpen: null,
 			datacollectionClosed: null,
-			profile: 2
+			profile: 2,
 		};
 	},
-	created() {
+	mounted() {
 		this.fillData();
 	},
 	methods: {
@@ -30,7 +30,7 @@ export default {
 				.then(response => response.json())
 				.then(data => data.filter(item => item.Profile === this.profile))
 				.then(profile => {
-					// Filter for the open and closed data sets
+					// Filter for the at open and at close data sets
 					const profileOpen = profile.filter(item => item.Direction === 'Open')
 					const profileClosed = profile.filter(item => item.Direction === 'Close')
 
@@ -57,14 +57,14 @@ export default {
 						labels: position,
 						datasets: [
 							{
-							label: "Average open torque",
-							backgroundColor: "#4885ed",
-							data: averageOpen
+								label: "Average open torque",
+								backgroundColor: "#4885ed",
+								data: averageOpen
 							},
 							{
-							label: "Last open torque",
-							backgroundColor: "#A3C2F6",
-							data: lastOpen
+								label: "Last open torque",
+								backgroundColor: "#A3C2F6",
+								data: lastOpen
 							}
 						]
 					};
@@ -72,14 +72,14 @@ export default {
 						labels: position,
 						datasets: [
 							{
-							label: "Average open torque",
-							backgroundColor: "#4885ed",
-							data: averageClosed
+								label: "Average open torque",
+								backgroundColor: "#4885ed",
+								data: averageClosed
 							},
 							{
-							label: "Last open torque",
-							backgroundColor: "#A3C2F6",
-							data: lastClosed
+								label: "Last open torque",
+								backgroundColor: "#A3C2F6",
+								data: lastClosed
 							}
 						]
 					};
@@ -90,7 +90,9 @@ export default {
 </script>
 
 <style scoped>
-div {
-	margin: 20px;
+.chart-content {
+	margin: 50px;
+	color: rgb(85, 85, 85);
 }
+
 </style>

@@ -3,7 +3,16 @@ import { Bar, mixins } from 'vue-chartjs'
 export default {
     extends: Bar,
     mixins: [mixins.reactiveProp],
-    props: ['chartData', 'options'],
+    props: {
+        chartData: {
+          type: Object,
+          default: null
+        },
+        options: {
+          type: Object,
+          default: null
+        }
+      },
     data() {
         return {
             options: { //Chart.js options
@@ -13,12 +22,20 @@ export default {
                             beginAtZero: true
                         },
                         gridLines: {
-                            display: true
+                            display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Valve position'
                         }
                     }],
                     xAxes: [{
                         gridLines: {
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Required torque (%)'
                         }
                     }]
                 },
@@ -34,7 +51,7 @@ export default {
         }
     },
     mounted() {
-        this.renderChart(this.chartdata, this.options)
+        this.renderChart(this.chartData, this.options)
     }
 
 }

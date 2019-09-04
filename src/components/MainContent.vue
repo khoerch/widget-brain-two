@@ -12,13 +12,13 @@
         <font-awesome-icon icon="map-marker-alt" />
       </header>
       <WhiteNavBar :heading="assetList"/>
-      <Chart />
+      <TorqueChart />
     </div>
   </section>
 </template>
 
 <script>
-import Chart from './Chart.vue'
+import TorqueChart from './TorqueChart.vue'
 import WhiteNavBar from './WhiteNavBar.vue'
 
 export default {
@@ -31,46 +31,55 @@ export default {
     return {
       terminalList: [{
           title: 'Dashboard',
-          active: false
+          active: false,
+          id: 1
         }, 
         {
           title: 'Asset Health',
-          active: true
+          active: true,
+          id: 2
         }, 
         {
           title: 'Work Orders',
-          active: false
+          active: false,
+          id: 3
         }
       ],
       assetList: [{
           title: 'Events',
-          active: false
+          active: false,
+          id: 1
         }, 
         {
           title: 'Position',
-          active: false
+          active: false,
+          id: 2
         }, 
         {
           title: 'Travel Time',
-          active: false
+          active: false,
+          id: 3
         }, 
         {
           title: 'Torque Profile',
-          active: true
+          active: true,
+          id: 4
         }, 
         {
           title: 'Work Orders',
-          active: false
+          active: false,
+          id: 5
         }, 
         {
           title: 'Alarm Analytics',
-          active: false
+          active: false,
+          id: 6
         }, 
       ]
     }
   },
   components: {
-    Chart,
+    TorqueChart,
     WhiteNavBar,
   }
 }
